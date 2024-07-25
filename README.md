@@ -15,8 +15,8 @@ You can install the package using `pipx`:
 ### Clone the Repository
 
 ```sh
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/svenhofman/tv-shows-tracker.git
+cd tv-shows-tracker
 pipx install .
 ```
 
