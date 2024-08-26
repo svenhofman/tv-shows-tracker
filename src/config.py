@@ -1,7 +1,7 @@
 import json
 import os
 
-CONFIG_FILE = "config/config.json"
+CONFIG_FILE = os.path.expanduser("~/.tv-shows-tracker/config.json")
 
 from . import database
 
