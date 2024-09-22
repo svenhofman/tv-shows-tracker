@@ -31,24 +31,22 @@ def search_show(args):
         *[f"{show['original_name']}|{show['id']}" for show in shows],
         "[e] exit|exit search",
     ]
+
+    # To simulate pass by reference, will be set in preview_command
+    selected_show_ref = [None]
+
     selected_index = display_menu(
         shows_menu_info,
         title="Press return/enter to add show, E to exit",
-        preview_function=preview_command,
+        preview_function=lambda show_string: preview_command(selected_show_ref, show_string),
     )
 
     # Exit is last option, None is returned when Escape is pressed
     if selected_index in (len(shows_menu_info) - 1, None):
         return
 
-    # Add show to database, we need to fetch to get status information
-    selected_show = shows[selected_index]
-    try:
-        show = fetch_show(selected_show["id"], get_auth_key())
-    except Exception as err:
-        print("Error:", err)
-        return
-
+    # Add selected show
+    show = selected_show_ref[0]
     response = add_shows(
         [
             {

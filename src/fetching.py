@@ -34,7 +34,7 @@ def fetch(url, auth_key):
         # Handle request timeout errors
         raise RuntimeError(
             "Request timeout: The request to the API timed out."
-        ) from err
+        ) from err2
 
 
 def fetch_show(show_id, auth_key):
